@@ -1,0 +1,45 @@
+h1, h2{
+    text-align: center;
+}
+
+#main{
+    height: 100vh;
+    border: 5px black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#game-box{
+    padding: 10vw 10vw;
+   
+    height: 60vh;
+    width: 80vw;
+    border: 5px black solid;
+}
+
+#game-timer{
+    position: absolute;
+    top: 10vh;
+}
+
+#game-score{
+    position: absolute;
+    top: 10vh;
+    left: 15vh;
+}
+
+#options-box{
+    padding: 5vh 2vh;
+}
+
+li{
+    padding: 1vh 0;
+}
+
+button{
+    position: relative;
+    left: 50vw;
+    bottom: 1vh;
+}
