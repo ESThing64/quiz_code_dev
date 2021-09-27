@@ -7,12 +7,14 @@ let optionBel = document.getElementById("option-b");
 let optionCel = document.getElementById("option-c");
 let optionDel = document.getElementById("option-d");
 let gameTimerel = document.getElementById("game-timer");
+let gameScoreEl = document.getElementById("game-score");
 let quizQuestionEl = document.getElementById("quiz-question");
 let rightWrongEl = document.getElementById("right-wrong");
 let startQuizBtn = document.getElementById("start-quiz-btn");
 let nextBtn = document.getElementById("next-btn");
 let question_1 = [];
 let questionCount = 0;
+let gamesScore = 0;
 
 // how do store the question asnwer and options.
 let gameStuff = [question_1 =
@@ -65,7 +67,7 @@ question_5 =
 ]
 
 
-// start button. just to set everythingto question 1
+// start game. 
 startQuizBtn.addEventListener("click", function () {
     setTime()
 
@@ -147,14 +149,34 @@ if (gameTimer === 0) {
 
 function checkAnswer() {
     if (gameStuff[0].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
+        addPts()
         rightWrongEl.textContent = "Thats right!"
-        console.log("It is correct")
+        
     } else {
         rightWrongEl.textContent = "You suck"
         console.log("you suck")
+        losePts()
     }
 }
-console.log()
+
+
+//Score keeper
+
+function addPts(){
+    gamesScore++
+    gameScoreEl.textContent = "Total Score: " + gamesScore
+
+}
+
+function losePts(){
+    gameTimer = gameTimer - 10
+    if (gameTimer < 0){
+        gameTimer = 0
+        clearInterval(timerInterval)
+    }
+}
+
+
 // now I need to make 1 button and when I press it. it will set a variable to the 
 //answer the person chose.
 //if a person clicks "option-a" it will set the variable  opionChosen to string "option-a"
