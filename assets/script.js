@@ -1,13 +1,16 @@
 
-let playGame = true;
-let gameTimer = 60;
-let optionChosen = "a";
-let optionAel = document.getElementById("option-a")
-let optionBel = document.getElementById("option-b")
-let optionCel = document.getElementById("option-c")
-let optionDel = document.getElementById("option-d")
-let quizQuestionEl = document.getElementById("quiz-question")
-let startQuizBtn = document.getElementById("start-quiz-btn")
+let playGame = false;
+let gameTimer = 75;
+let optionChosen;
+let optionAel = document.getElementById("option-a");
+let optionBel = document.getElementById("option-b");
+let optionCel = document.getElementById("option-c");
+let optionDel = document.getElementById("option-d");
+let gameTimerel = document.getElementById("game-timer");
+let quizQuestionEl = document.getElementById("quiz-question");
+let rightWrongEl = document.getElementById("right-wrong");
+let startQuizBtn = document.getElementById("start-quiz-btn");
+let nextBtn = document.getElementById("next-btn");
 let question_1 = [];
 let questionCount = 0;
 
@@ -62,14 +65,33 @@ question_5 =
 ]
 
 
+// start button. just to set everythingto question 1
+startQuizBtn.addEventListener("click", function () {
+    setTime()
+
+    
+
+        quizQuestionEl.innerHTML = gameStuff[questionCount].Question
+        //how do I get the options onto the page?
+        optionAel.innerHTML = gameStuff[questionCount].optionShown[0]
+        optionBel.innerHTML = gameStuff[questionCount].optionShown[1]
+        optionCel.innerHTML = gameStuff[questionCount].optionShown[2]
+        optionDel.innerHTML = gameStuff[questionCount].optionShown[3]
+    
+        if (playGame = false){
+            gameOver()
+        }
+ 
+})
+
 
 // start button will only start with gamestuf[0].
 // then there will be if 
 //statment if statment for the next btn. if gamestuff = 0 then run the incrmatnation questionsCount++
 //
-startQuizBtn.addEventListener("click", function () {
+nextBtn.addEventListener("click", function () {
     questionCount++
-
+    rightWrongEl.textContent = ""
         quizQuestionEl.innerHTML = gameStuff[questionCount].Question
         //how do I get the options onto the page?
         optionAel.innerHTML = gameStuff[questionCount].optionShown[0]
@@ -125,8 +147,10 @@ if (gameTimer === 0) {
 
 function checkAnswer() {
     if (gameStuff[0].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
+        rightWrongEl.textContent = "Thats right!"
         console.log("It is correct")
     } else {
+        rightWrongEl.textContent = "You suck"
         console.log("you suck")
     }
 }
@@ -157,19 +181,33 @@ optionDel.addEventListener("click", function () {
     checkAnswer();
 });
 
-console.log("before button press", optionChosen)
 
 
-
-
+//example
+function gameOver(){
+    quizQuestionEl.innerHTML = ""
+    //how do I get the options onto the page?
+    optionAel.innerHTML = ""
+    optionBel.innerHTML = ""
+    optionCel.innerHTML = ""
+    optionDel.innerHTML = ""
+}
+  
 
 // 1. back next-btn
 // 2. make a for loop have that for loop trigger the next page to load.
 // 3. i need to make a function to get the next page to load, but not check the answer.
 // how do I get the info on the screen to show ? with javascript.
 
-// function setTime() {
-//     var TimerInterval = setInterval(function () {
-//         gameTimer--;
-//     })
-// }
+        function setTime(){
+            var timerInterval = setInterval(function(){
+                gameTimer--;
+                
+                gameTimerel.textContent = "Time Left: " + gameTimer;
+                if (gameTimer === 0){
+                    clearInterval(timerInterval)
+                    playGame = false
+                    
+                }
+            }, 1000)
+        }

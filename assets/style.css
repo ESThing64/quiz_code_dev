@@ -4,7 +4,7 @@ h1, h2{
 
 #main{
     height: 100vh;
-    border: 5px black solid;
+    /* border: 5px black solid; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ h1, h2{
    
     height: 60vh;
     width: 80vw;
-    border: 5px black solid;
+    /* border: 5px black solid; */
 }
 
 #game-timer{
@@ -42,4 +42,11 @@ button{
     position: relative;
     left: 50vw;
     bottom: 1vh;
+    
+}
+
+#right-wrong{
+    position: relative;
+    left: 20vw
+
 }
