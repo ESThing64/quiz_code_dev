@@ -1,6 +1,21 @@
+//know issues
+//time can go negative, if the the player gets an answer wrong
+//I need to make clicknig the answer, go to the next question
+//todo
+//I need to write the questions
+//Make an ending game function. 
+//What will that do?
+//i need to make local storage, user will input their Name, and it will record their score.
+//come up with a way to score the player.
+
+
+
+
+
+
 
 let playGame = false;
-let gameTimer = 75;
+let gameTimer = 10;
 let optionChosen;
 let optionAel = document.getElementById("option-a");
 let optionBel = document.getElementById("option-b");
@@ -16,7 +31,7 @@ let question_1 = [];
 let questionCount = 0;
 let gamesScore = 0;
 
-// how do store the question asnwer and options.
+// how to store the question asnwer and options.
 let gameStuff = [question_1 =
 {
     Question: "How much would a wood chuck",
@@ -69,9 +84,18 @@ question_5 =
 
 // start game. 
 startQuizBtn.addEventListener("click", function () {
-    setTime()
-
     
+
+  console.log(playGame)
+
+playGame = true
+
+    if (playGame == true){
+        console.log(playGame)
+          setTime()
+    }
+
+   
 
         quizQuestionEl.innerHTML = gameStuff[questionCount].Question
         //how do I get the options onto the page?
@@ -80,8 +104,9 @@ startQuizBtn.addEventListener("click", function () {
         optionCel.innerHTML = gameStuff[questionCount].optionShown[2]
         optionDel.innerHTML = gameStuff[questionCount].optionShown[3]
     
-        if (playGame = false){
+        if (playGame == false){
             gameOver()
+            console.log("this means the game over function is going to run")
         }
  
 })
@@ -123,11 +148,11 @@ nextBtn.addEventListener("click", function () {
 
 
 
-if (gameTimer === 0) {
-    playGame = false
-} else {
-    playGame = true
-}
+// if (gameTimer === 0) {
+//     playGame = false
+// } else {
+//     playGame = true
+// }
 
 
 
@@ -170,7 +195,7 @@ function addPts(){
 
 function losePts(){
     gameTimer = gameTimer - 10
-    if (gameTimer < 0){
+    if (gameTimer < 1){
         gameTimer = 0
         clearInterval(timerInterval)
     }
@@ -207,6 +232,7 @@ optionDel.addEventListener("click", function () {
 
 //example
 function gameOver(){
+    console.log("game function is running")
     quizQuestionEl.innerHTML = ""
     //how do I get the options onto the page?
     optionAel.innerHTML = ""
@@ -226,10 +252,19 @@ function gameOver(){
                 gameTimer--;
                 
                 gameTimerel.textContent = "Time Left: " + gameTimer;
-                if (gameTimer === 0){
+                if (gameTimer < 1){
                     clearInterval(timerInterval)
                     playGame = false
+
+                    if (playGame == false){
+                        gameOver()
+
+                    }
+                    console.log(playGame, "this means the play game var is changing to endgame.")
                     
                 }
             }, 1000)
         }
+
+
+        
