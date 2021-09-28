@@ -15,7 +15,7 @@
 
 
 let playGame = false;
-let gameTimer = 10;
+let gameTimer = 75;
 let optionChosen;
 let optionAel = document.getElementById("option-a");
 let optionBel = document.getElementById("option-b");
@@ -116,18 +116,65 @@ playGame = true
 // then there will be if 
 //statment if statment for the next btn. if gamestuff = 0 then run the incrmatnation questionsCount++
 //
-nextBtn.addEventListener("click", function () {
-    questionCount++
-    rightWrongEl.textContent = ""
-        quizQuestionEl.innerHTML = gameStuff[questionCount].Question
-        //how do I get the options onto the page?
-        optionAel.innerHTML = gameStuff[questionCount].optionShown[0]
-        optionBel.innerHTML = gameStuff[questionCount].optionShown[1]
-        optionCel.innerHTML = gameStuff[questionCount].optionShown[2]
-        optionDel.innerHTML = gameStuff[questionCount].optionShown[3]
+// nextBtn.addEventListener("click", function () {
+  
     
 
-})
+// })
+
+
+function checkAnswer() {
+    if (gameStuff[0].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
+        addPts()
+        // how do i get this to pause and show this message before moving to the next question
+        //set a timer for 3 seconds??
+        rightWrongEl.textContent = "Thats right!"
+        //put timer here.
+
+        
+        questionCount++
+        rightWrongEl.textContent = ""
+            quizQuestionEl.innerHTML = gameStuff[questionCount].Question
+            //how do I get the options onto the page?
+            optionAel.innerHTML = gameStuff[questionCount].optionShown[0]
+            optionBel.innerHTML = gameStuff[questionCount].optionShown[1]
+            optionCel.innerHTML = gameStuff[questionCount].optionShown[2]
+            optionDel.innerHTML = gameStuff[questionCount].optionShown[3]
+        
+    } else {
+        rightWrongEl.textContent = "You suck"
+        console.log("you suck")
+        losePts()
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// nextBtn.addEventListener("click", function () {
+//     questionCount++
+//     rightWrongEl.textContent = ""
+//         quizQuestionEl.innerHTML = gameStuff[questionCount].Question
+//         //how do I get the options onto the page?
+//         optionAel.innerHTML = gameStuff[questionCount].optionShown[0]
+//         optionBel.innerHTML = gameStuff[questionCount].optionShown[1]
+//         optionCel.innerHTML = gameStuff[questionCount].optionShown[2]
+//         optionDel.innerHTML = gameStuff[questionCount].optionShown[3]
+    
+
+// })
+
+
+// function checkAnswer() {
+//     if (gameStuff[0].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
+//         addPts()
+//         rightWrongEl.textContent = "Thats right!"
+        
+//     } else {
+//         rightWrongEl.textContent = "You suck"
+//         console.log("you suck")
+//         losePts()
+//     }
+// }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //how do i get the quetion from the array game Stuff on to thewebpage?
 // for (let i = 0; i < gameStuff.length; i++) {
@@ -172,17 +219,7 @@ nextBtn.addEventListener("click", function () {
 //start with index 0 because this is question 1
 // how do iget the answer?  
 
-function checkAnswer() {
-    if (gameStuff[0].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
-        addPts()
-        rightWrongEl.textContent = "Thats right!"
-        
-    } else {
-        rightWrongEl.textContent = "You suck"
-        console.log("you suck")
-        losePts()
-    }
-}
+
 
 
 //Score keeper
