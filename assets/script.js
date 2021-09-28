@@ -127,7 +127,7 @@ startQuizBtn.addEventListener("click", function () {
 
 
 function checkAnswer() {
-    if (gameStuff[0].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
+    if (gameStuff[questionCount].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
         addPts()
         console.log(optionChosen)
         setMessageTimer("Thats right")
@@ -224,11 +224,18 @@ optionDel.addEventListener("click", function () {
 //example
 function gameOver() {
     gamesScore = gameTimer
+    playGame = false
+    gameScoreEl.textContent = "Final score: " + gamesScore
+    gameTimerel.textContent = ""
     quizQuestionEl.innerHTML = ""
     optionAel.innerHTML = ""
     optionBel.innerHTML = ""
     optionCel.innerHTML = ""
     optionDel.innerHTML = ""
+
+    if (gameScore > 1){
+        
+    }
 }
 
 
@@ -236,6 +243,11 @@ function gameOver() {
 function setTime() {
     var timerInterval = setInterval(function () {
         gameTimer--;
+
+       if (playGame == false){
+        clearInterval(timerInterval)
+        return
+       }
 
         gameTimerel.textContent = "Time Left: " + gameTimer;
         if (gameTimer < 1) {
