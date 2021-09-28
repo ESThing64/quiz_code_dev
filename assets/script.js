@@ -118,22 +118,31 @@ playGame = true
 //
 // nextBtn.addEventListener("click", function () {
   
-    
-
 // })
+
+//when the game starts remove the "start button"
+
+// when im on question 5. I need it to stop the game
+// check the time and translate the time left to points.
+//bring up promt for the layer to enter their name and store theirpoints into local storage
+//after done show the restart button.
+// i think i also need to set when time is up display a message. you got zero points try agin
+// show the restart button.
+//when button is clicked. make the button glow is boxshadow
 
 
 function checkAnswer() {
     if (gameStuff[0].answer == optionChosen) {  //change this is a variable and base it on what the person chooses.
         addPts()
+        setMessageTimer("Thats right")
         // how do i get this to pause and show this message before moving to the next question
         //set a timer for 3 seconds??
-        rightWrongEl.textContent = "Thats right!"
+       
         //put timer here.
 
         
         questionCount++
-        rightWrongEl.textContent = ""
+       
             quizQuestionEl.innerHTML = gameStuff[questionCount].Question
             //how do I get the options onto the page?
             optionAel.innerHTML = gameStuff[questionCount].optionShown[0]
@@ -142,10 +151,29 @@ function checkAnswer() {
             optionDel.innerHTML = gameStuff[questionCount].optionShown[3]
         
     } else {
-        rightWrongEl.textContent = "You suck"
+    setMessageTimer("you suck")
+        
         console.log("you suck")
         losePts()
     }
+
+    function setMessageTimer(message){
+        var messageTimer = 3
+        var messageInterval = setInterval(function(){
+            messageTimer--
+            rightWrongEl.textContent = message
+        
+        
+            if (messageTimer < 1){
+                clearInterval(messageInterval)
+                
+                rightWrongEl.textContent = ""
+                
+            }
+        }, 1000)
+    }
+
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
