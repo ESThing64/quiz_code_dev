@@ -24,6 +24,12 @@ let question_4 = [];
 let question_5 = [];
 let questionCount = 0;
 let gamesScore = 0;
+let uEl = document.getElementById("ul-el") 
+let saveScoreBtn = document.getElementById("save-scorebtn")
+let savedScores = []
+let savedScoresNumber = []
+let nameInput = document.getElementById("name-input")
+let scoreBtn = document.getElementById("score-btn")
 
 // how to store the question asnwer and options.
 let gameStuff = [question_1 =
@@ -232,10 +238,12 @@ function gameOver() {
     optionBel.innerHTML = ""
     optionCel.innerHTML = ""
     optionDel.innerHTML = ""
+    scoreBtn.classList.remove("hide")
 
-    if (gameScore > 1){
+
+    // if (gameScore > 1){
         
-    }
+    // }
 }
 
 
@@ -273,4 +281,19 @@ console.log("this is the answer for number5", gameStuff[4].answer)
 
 
 //end game
+// save score function
+saveScoreBtn.addEventListener("click", function() {
+    savedScores.push(nameInput.value)
+    savedScoresNumber.push(gamesScore)
 
+   for (let i = 0; i < savedScores.length; i++) {
+       uEl.innerHTML += "<li>" + savedScores[i] + "   Score: " + savedScoresNumber[i] + "</li>"
+        
+    }
+                                        
+
+}) 
+
+
+
+//second video 10-20

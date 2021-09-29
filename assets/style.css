@@ -38,7 +38,7 @@ li{
     padding: 1vh 0;
 }
 
-button{
+.mybutton{
     position: relative;
     left: 50vw;
     bottom: 1vh;
@@ -52,6 +52,15 @@ button{
 }
 
 
+.hide{
+    visibility: hidden;
+    
+}
+
+.shown{
+    visibility: visible;
+    
+}
 
 
 /* /* darkmode https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/ */
@@ -60,4 +69,8 @@ body {
     color: #eee;
     background-color: #121212;
     
+  }
+
+  .change-text{
+      color: black;
   }
