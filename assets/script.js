@@ -153,9 +153,9 @@ function checkAnswer() {
         optionDel.innerHTML = gameStuff[questionCount].optionShown[3]
 
     } else {
-        setMessageTimer("you suck")
+        setMessageTimer("Try Again")
 
-        console.log("you suck")
+        
         losePts()
     }
 
@@ -284,12 +284,20 @@ console.log("this is the answer for number5", gameStuff[4].answer)
 // save score function
 saveScoreBtn.addEventListener("click", function() {
     savedScores.push(nameInput.value)
-    savedScoresNumber.push(gamesScore)
+    savedScores.push(gamesScore)
+    // savedScoresNumber.push(gamesScore)
 
-   for (let i = 0; i < savedScores.length; i++) {
-       uEl.innerHTML += "<li>" + savedScores[i] + "   Score: " + savedScoresNumber[i] + "</li>"
+   
+ for (let i = 0; i < 2; i++) {
+      uEl.innerHTML += "<li>" + savedScores[i] + "   Score: " + savedScores[i+1] + "</li>"
+ }
+     
+       
+    // savedScores = JSON.stringify(savedScores)
+    localStorage.setItem("savedScores", JSON.stringify(savedScoresNumber))
+    
         
-    }
+    
                                         
 
 }) 
